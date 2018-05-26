@@ -1,7 +1,9 @@
 import * as React from 'react';
+import IMyFirstRendererParams from 'src/IMyFirstRendererParams';
+import IOrder from './IOrder';
 
-const MyFirstRenderer = () =>{
-    return(<div>afdsasfdfdsafd</div>) 
+const MyFirstRenderer = (perams:IOrder) =>{
+    return(<div>${perams.Address}</div>) 
 }
 
 

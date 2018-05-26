@@ -14,7 +14,7 @@ class App extends React.Component {
         </header>
         <p className="App-intro">
           <div>
-            <MyFirstRenderer/>
+            <MyFirstRenderer Address='wrewerwre'/>
           </div>
         </p>
       </div>
