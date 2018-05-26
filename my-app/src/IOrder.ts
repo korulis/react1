@@ -1,8 +1,8 @@
 
 
-interface IOrder
+interface Iorder
 {
     Address: string;
 }
 
-export default IOrder;
+export default Iorder;

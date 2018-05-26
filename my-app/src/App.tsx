@@ -5,6 +5,8 @@ import logo from './logo.svg';
 import MyFirstRenderer from './MyFirstRenderer';
 
 class App extends React.Component {
+  order = {Address:"S.Staneviciaus g. 14-24"};
+
   public render() {
     return (
       <div className="App">
@@ -14,7 +16,7 @@ class App extends React.Component {
         </header>
         <p className="App-intro">
           <div>
-            <MyFirstRenderer Address='wrewerwre'/>
+            <MyFirstRenderer Order={this.order} />
           </div>
         </p>
       </div>
