@@ -1,8 +1,7 @@
-import Iorder from 'src/IOrder';
+import MyOrder from 'src/MyOrder';
 
-interface MyFirstRendererParams
-{
-    Order: Iorder;
+interface MyFirstRendererParams{
+    orders : MyOrder[];
 }
 
 export default MyFirstRendererParams;

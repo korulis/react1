@@ -1,6 +1,7 @@
 import * as React from 'react';
 // import MyFirstRendererParams from './MyFirstRendererParams';
 import MySingleRowsComponent from './MyRowsComponent';
+import MyOrder from './MyOrder';
 
 class MyTable extends React.Component{
 
@@ -12,9 +13,9 @@ class MyTable extends React.Component{
 
 
 
-public render(){
+public render(){ 
 
-  let order = {Address:"Staneviciaus g", Phone: "23424"};
+  let orders:MyOrder[] = [{Address:"Staneviciaus g", Phone: "23424"}];
 
 return(
   <table>    
@@ -23,7 +24,7 @@ return(
       <td> PHONE </td>
       <td> NUMBER_OF_PIZZAS </td>
     </tr>
-    <MySingleRowsComponent Order={order}/>
+    <MySingleRowsComponent orders={orders}/>
   </table>
   ); 
 }

@@ -1,9 +1,9 @@
 
 
-interface Iorder
+interface MyOrder
 {
     Address: string;
     Phone: string;
 }
 
-export default Iorder;
+export default MyOrder;
