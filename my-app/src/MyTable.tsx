@@ -1,6 +1,6 @@
 import * as React from 'react';
 // import MyFirstRendererParams from './MyFirstRendererParams';
-import MySingleRowsComponent from './MyRowsComponent';
+import MyRowsComponent from './MyRowsComponent';
 import MyOrder from './MyOrder';
 
 class MyTable extends React.Component{
@@ -27,7 +27,7 @@ return(
       <td> PHONE </td>
       <td> NUMBER_OF_PIZZAS </td>
     </tr>
-    <MySingleRowsComponent orders={orders}/>
+    <MyRowsComponent orders={orders}/>
   </table>
   ); 
 }

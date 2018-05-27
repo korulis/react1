@@ -1,9 +1,12 @@
 import * as React from 'react';
-import MyFirstRendererParams from './MyFirstRendererParams';
+import MyRowsComponentParams from './MyRowsComponentParams';
+import MyOneRow from './MyOneRow';
 
-const MySingleRowsComponent = (perams:MyFirstRendererParams) =>{
+
+const MyRowsComponent = (perams:MyRowsComponentParams) =>{
     return(
     <div>
+        <MyOneRow order={perams.orders[0]}/>
         <tr>
             <td>{perams.orders[0].Address}</td>
             <td>{perams.orders[0].Phone}</td>
@@ -19,4 +22,4 @@ const MySingleRowsComponent = (perams:MyFirstRendererParams) =>{
 
 
 
-export default MySingleRowsComponent;
+export default MyRowsComponent;
