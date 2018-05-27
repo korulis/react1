@@ -15,7 +15,10 @@ class MyTable extends React.Component{
 
 public render(){ 
 
-  let orders:MyOrder[] = [{Address:"Staneviciaus g", Phone: "23424"}];
+  let orders:MyOrder[] = [
+    {Address:"Staneviciaus g", Phone: "23424"},
+    {Address:"Ateities g", Phone: "353535"}
+  ];
 
 return(
   <table>    

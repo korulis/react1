@@ -1,12 +1,19 @@
 import * as React from 'react';
-import Order from './MyOrder';
-
-interface MyFirstRendererParams{
-    orders : Order[];
-}
+import MyFirstRendererParams from './MyFirstRendererParams';
 
 const MySingleRowsComponent = (perams:MyFirstRendererParams) =>{
-    return(<tr><td>{perams.orders[0].Address}</td><td>{perams.orders[0].Phone}</td></tr>);
+    return(
+    <div>
+        <tr>
+            <td>{perams.orders[0].Address}</td>
+            <td>{perams.orders[0].Phone}</td>
+        </tr>
+        <tr>
+            <td>{perams.orders[1].Address}</td>
+            <td>{perams.orders[1].Phone}</td>
+        </tr>
+    </div>
+    );
 };
 
 
