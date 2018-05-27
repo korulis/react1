@@ -2,10 +2,10 @@ import * as React from 'react';
 import './App.css';
 
 import logo from './logo.svg';
-import MyFirstRenderer from './MyFirstRenderer';
+import MyTable from './MyTable';
 
 class App extends React.Component {
-  order = {Address:"S.Staneviciaus g. 14-24"};
+  order = {Address:"S.Staneviciaus g. 14-24", Phone: "865034755"};
 
   public render() {
     return (
@@ -16,7 +16,7 @@ class App extends React.Component {
         </header>
         <p className="App-intro">
           <div>
-            <MyFirstRenderer Order={this.order} />
+            <MyTable/>
           </div>
         </p>
       </div>
