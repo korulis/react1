@@ -5,18 +5,11 @@ import MyOrder from './MyOrder';
 
 class MyTable extends React.Component{
 
-    
-
-//    const MyFirstRenderer = (perams:MyFirstRendererParams) =>{
-//        return(<tr><td>{perams.Order.Address}</td><td>{perams.Order.Phone}</td></tr>);
-//    };
-
-
-
 public render(){ 
 
   let orders:MyOrder[] = [
     {Address:"Staneviciaus g", Phone: "23424"},
+    {Address:"Ateitieds g", Phone: "353535s"},
     {Address:"Ateities g", Phone: "353535"}
   ];
 
