@@ -34,7 +34,7 @@ return(
     </button>
   <table>    
     <tr>
-      <td> ADDRESS </td>
+      <td> ADDRESS </td> 
       <td> PHONE </td>
       <td> NUMBER_OF_PIZZAS </td>
     </tr>

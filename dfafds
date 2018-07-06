@@ -1,0 +1,459 @@
+[1mdiff --git a/my-app/src/App.tsx b/my-app/src/App.tsx[m
+[1mindex b57856b..a5ece44 100644[m
+[1m--- a/my-app/src/App.tsx[m
+[1m+++ b/my-app/src/App.tsx[m
+[36m@@ -1,27 +1,27 @@[m
+[31m-import * as React from 'react';[m
+[31m-import './App.css';[m
+[31m-[m
+[31m-import logo from './logo.svg';[m
+[31m-import MyTable from './MyTable';[m
+[31m-[m
+[31m-class App extends React.Component {[m
+[31m-  order = {Address:"S.Staneviciaus g. 14-24", Phone: "865034755"};[m
+[31m-[m
+[31m-  public render() {[m
+[31m-    return ([m
+[31m-      <div className="App">[m
+[31m-        <header className="App-header">[m
+[31m-          <img src={logo} className="App-logo" alt="logo" />[m
+[31m-          <h1 className="App-title">Welcome to React</h1>[m
+[31m-        </header>[m
+[31m-        <p className="App-intro">[m
+[31m-          <div>[m
+[31m-            <MyTable/>[m
+[31m-          </div>[m
+[31m-        </p>[m
+[31m-      </div>[m
+[31m-    );[m
+[31m-  }[m
+[31m-}[m
+[31m-[m
+[31m-export default App;[m
+[32m+[m[32mimport * as React from 'react';[m[41m[m
+[32m+[m[32mimport './App.css';[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mimport logo from './logo.svg';[m[41m[m
+[32m+[m[32mimport MyTable from './MyTable';[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mclass App extends React.Component {[m[41m[m
+[32m+[m[32m  order = {Address:"S.Staneviciaus g. 14-24", Phone: "865034755"};[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  public render() {[m[41m[m
+[32m+[m[32m    return ([m[41m[m
+[32m+[m[32m      <div className="App">[m[41m[m
+[32m+[m[32m        <header className="App-header">[m[41m[m
+[32m+[m[32m          <img src={logo} className="App-logo" alt="logo" />[m[41m[m
+[32m+[m[32m          <h1 className="App-title">Welcome to React</h1>[m[41m[m
+[32m+[m[32m        </header>[m[41m[m
+[32m+[m[32m        <p className="App-intro">[m[41m[m
+[32m+[m[32m          <div>[m[41m[m
+[32m+[m[32m            <MyTable/>[m[41m[m
+[32m+[m[32m          </div>[m[41m[m
+[32m+[m[32m        </p>[m[41m[m
+[32m+[m[32m      </div>[m[41m[m
+[32m+[m[32m    );[m[41m[m
+[32m+[m[32m  }[m[41m[m
+[32m+[m[32m}[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mexport default App;[m[41m[m
+[1mdiff --git a/my-app/src/MyOneRow.tsx b/my-app/src/MyOneRow.tsx[m
+[1mindex cc53f6b..2fce04a 100644[m
+[1m--- a/my-app/src/MyOneRow.tsx[m
+[1m+++ b/my-app/src/MyOneRow.tsx[m
+[36m@@ -1,23 +1,23 @@[m
+[31m-import * as React from 'react';[m
+[31m-import MyOrder from './MyOrder';[m
+[31m-[m
+[31m-[m
+[31m-interface MyOneRowParams{[m
+[31m-    order : MyOrder;[m
+[31m-}[m
+[31m-[m
+[31m-const MyOneRow = (params:MyOneRowParams) =>{[m
+[31m-    return([m
+[31m-    <div>[m
+[31m-        <tr>[m
+[31m-            <td>{params.order.Address}</td>[m
+[31m-            <td>{params.order.Phone}</td>[m
+[31m-        </tr>[m
+[31m-    </div>[m
+[31m-    );[m
+[31m-};[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[32m+[m[32mimport * as React from 'react';[m[41m[m
+[32m+[m[32mimport MyOrder from './MyOrder';[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32minterface MyOneRowParams{[m[41m[m
+[32m+[m[32m    order : MyOrder;[m[41m[m
+[32m+[m[32m}[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mconst MyOneRow = (params:MyOneRowParams) =>{[m[41m[m
+[32m+[m[32m    return([m[41m[m
+[32m+[m[32m    <div>[m[41m[m
+[32m+[m[32m        <tr>[m[41m[m
+[32m+[m[32m            <td>{params.order.Address}</td>[m[41m[m
+[32m+[m[32m            <td>{params.order.Phone}</td>[m[41m[m
+[32m+[m[32m        </tr>[m[41m[m
+[32m+[m[32m    </div>[m[41m[m
+[32m+[m[32m    );[m[41m[m
+[32m+[m[32m};[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+ export default MyOneRow;[m
+\ No newline at end of file[m
+[1mdiff --git a/my-app/src/MyOrder.ts b/my-app/src/MyOrder.ts[m
+[1mindex 789cfd7..f6ea44b 100644[m
+[1m--- a/my-app/src/MyOrder.ts[m
+[1m+++ b/my-app/src/MyOrder.ts[m
+[36m@@ -1,9 +1,9 @@[m
+[31m-[m
+[31m-[m
+[31m-interface MyOrder[m
+[31m-{[m
+[31m-    Address: string;[m
+[31m-    Phone: string;[m
+[31m-}[m
+[31m-[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32minterface MyOrder[m[41m[m
+[32m+[m[32m{[m[41m[m
+[32m+[m[32m    Address: string;[m[41m[m
+[32m+[m[32m    Phone: string;[m[41m[m
+[32m+[m[32m}[m[41m[m
+[32m+[m[41m[m
+ export default MyOrder;[m
+\ No newline at end of file[m
+[1mdiff --git a/my-app/src/MyRowsComponent.tsx b/my-app/src/MyRowsComponent.tsx[m
+[1mindex b7b504b..9d0422d 100644[m
+[1m--- a/my-app/src/MyRowsComponent.tsx[m
+[1m+++ b/my-app/src/MyRowsComponent.tsx[m
+[36m@@ -1,16 +1,16 @@[m
+[31m-import * as React from 'react';[m
+[31m-import MyRowsComponentParams from './MyRowsComponentParams';[m
+[31m-import MyOneRow from './MyOneRow';[m
+[31m-[m
+[31m-[m
+[31m-const MyRowsComponent = (perams:MyRowsComponentParams) =>{[m
+[31m-    let result = [];[m
+[31m-[m
+[31m-    for (const order of perams.orders) {[m
+[31m-        result.push(MyOneRow({order:order}));[m
+[31m-    }[m
+[31m-[m
+[31m-    return (<div>{result}</div>);[m
+[31m-};[m
+[31m-[m
+[32m+[m[32mimport * as React from 'react';[m[41m[m
+[32m+[m[32mimport MyRowsComponentParams from './MyRowsComponentParams';[m[41m[m
+[32m+[m[32mimport MyOneRow from './MyOneRow';[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mconst MyRowsComponent = (perams:MyRowsComponentParams) =>{[m[41m[m
+[32m+[m[32m    let result = [];[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    for (const order of perams.orders) {[m[41m[m
+[32m+[m[32m        result.push(MyOneRow({order:order}));[m[41m[m
+[32m+[m[32m    }[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    return (<div>{result}</div>);[m[41m[m
+[32m+[m[32m};[m[41m[m
+[32m+[m[41m[m
+ export default MyRowsComponent;[m
+\ No newline at end of file[m
+[1mdiff --git a/my-app/src/MyRowsComponentParams.ts b/my-app/src/MyRowsComponentParams.ts[m
+[1mindex 426c217..3059ab8 100644[m
+[1m--- a/my-app/src/MyRowsComponentParams.ts[m
+[1m+++ b/my-app/src/MyRowsComponentParams.ts[m
+[36m@@ -1,7 +1,7 @@[m
+[31m-import MyOrder from 'src/MyOrder';[m
+[31m-[m
+[31m-interface MyRowsComponentParams{[m
+[31m-    orders : MyOrder[];[m
+[31m-}[m
+[31m-[m
+[32m+[m[32mimport MyOrder from 'src/MyOrder';[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32minterface MyRowsComponentParams{[m[41m[m
+[32m+[m[32m    orders : MyOrder[];[m[41m[m
+[32m+[m[32m}[m[41m[m
+[32m+[m[41m[m
+ export default MyRowsComponentParams;[m
+\ No newline at end of file[m
+[1mdiff --git a/my-app/src/MyTable.tsx b/my-app/src/MyTable.tsx[m
+[1mindex b78d465..9f218b2 100644[m
+[1m--- a/my-app/src/MyTable.tsx[m
+[1m+++ b/my-app/src/MyTable.tsx[m
+[36m@@ -1,53 +1,53 @@[m
+[31m-import * as React from 'react';[m
+[31m-// import MyFirstRendererParams from './MyFirstRendererParams';[m
+[31m-import MyRowsComponent from './MyRowsComponent';[m
+[31m-import MyOrder from './MyOrder';[m
+[31m-import MyRowsComponentParams from './MyRowsComponentParams';[m
+[31m-[m
+[31m-class MyTable extends React.Component<{},MyRowsComponentParams>{[m
+[31m-[m
+[31m-  constructor(){[m
+[31m-    super({});[m
+[31m-[m
+[31m-    let orders:MyOrder[] = [[m
+[31m-      {Address:"Staneviciaus g", Phone: "23424"},[m
+[31m-      {Address:"Ateitieds g", Phone: "353535s"},[m
+[31m-      {Address:"Ateities g", Phone: "353535"}[m
+[31m-    ];[m
+[31m-[m
+[31m-    this.state = {orders:orders};[m
+[31m-  [m
+[31m-  }[m
+[31m-[m
+[31m-HandleClick = () => {[m
+[31m-  let currentOrders = this.state;[m
+[31m-  currentOrders.orders.pop();[m
+[31m-  this.setState(currentOrders);[m
+[31m-}[m
+[31m-[m
+[31m-public render(){ [m
+[31m-[m
+[31m-return([m
+[31m-  <div>[m
+[31m-    <button onClick={this.HandleClick}>[m
+[31m-      Add[m
+[31m-    </button>[m
+[31m-  <table>    [m
+[31m-    <tr>[m
+[31m-      <td> ADDRESS </td>[m
+[31m-      <td> PHONE </td>[m
+[31m-      <td> NUMBER_OF_PIZZAS </td>[m
+[31m-    </tr>[m
+[31m-    <MyRowsComponent orders={this.state.orders}/>[m
+[31m-  </table>[m
+[31m-  </div>[m
+[31m-  ); [m
+[31m-}[m
+[31m-[m
+[31m-}[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[32m+[m[32mimport * as React from 'react';[m[41m[m
+[32m+[m[32m// import MyFirstRendererParams from './MyFirstRendererParams';[m[41m[m
+[32m+[m[32mimport MyRowsComponent from './MyRowsComponent';[m[41m[m
+[32m+[m[32mimport MyOrder from './MyOrder';[m[41m[m
+[32m+[m[32mimport MyRowsComponentParams from './MyRowsComponentParams';[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mclass MyTable extends React.Component<{},MyRowsComponentParams>{[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  constructor(){[m[41m[m
+[32m+[m[32m    super({});[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    let orders:MyOrder[] = [[m[41m[m
+[32m+[m[32m      {Address:"Staneviciaus g", Phone: "23424"},[m[41m[m
+[32m+[m[32m      {Address:"Ateitieds g", Phone: "353535s"},[m[41m[m
+[32m+[m[32m      {Address:"Ateities g", Phone: "353535"}[m[41m[m
+[32m+[m[32m    ];[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    this.state = {orders:orders};[m[41m[m
+[32m+[m[41m  [m
+[32m+[m[32m  }[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mHandleClick = () => {[m[41m[m
+[32m+[m[32m  let currentOrders = this.state;[m[41m[m
+[32m+[m[32m  currentOrders.orders.pop();[m[41m[m
+[32m+[m[32m  this.setState(currentOrders);[m[41m[m
+[32m+[m[32m}[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mpublic render(){[m[41m [m
+[32m+[m[41m[m
+[32m+[m[32mreturn([m[41m[m
+[32m+[m[32m  <div>[m[41m[m
+[32m+[m[32m    <button onClick={this.HandleClick}>[m[41m[m
+[32m+[m[32m      Add[m[41m[m
+[32m+[m[32m    </button>[m[41m[m
+[32m+[m[32m  <table>[m[41m    [m
+[32m+[m[32m    <tr>[m[41m[m
+[32m+[m[32m      <td> ADDRESS </td>[m[41m [m
+[32m+[m[32m      <td> PHONE </td>[m[41m[m
+[32m+[m[32m      <td> NUMBER_OF_PIZZAS </td>[m[41m[m
+[32m+[m[32m    </tr>[m[41m[m
+[32m+[m[32m    <MyRowsComponent orders={this.state.orders}/>[m[41m[m
+[32m+[m[32m  </table>[m[41m[m
+[32m+[m[32m  </div>[m[41m[m
+[32m+[m[32m  );[m[41m [m
+[32m+[m[32m}[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m}[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+ export default MyTable;[m
+\ No newline at end of file[m
+[1mdiff --git a/my-app/tslint.json b/my-app/tslint.json[m
+[1mindex beb8d11..ebb0d0d 100644[m
+[1m--- a/my-app/tslint.json[m
+[1m+++ b/my-app/tslint.json[m
+[36m@@ -1,77 +1,77 @@[m
+[31m-{[m
+[31m-    "extends": ["tslint-react"],[m
+[31m-    "rules": {[m
+[31m-        "align": [[m
+[31m-            false,[m
+[31m-            "parameters",[m
+[31m-            "arguments",[m
+[31m-            "statements"[m
+[31m-        ],[m
+[31m-        "ban": false,[m
+[31m-        "class-name": true,[m
+[31m-        "comment-format": [[m
+[31m-            true,[m
+[31m-            "check-space"[m
+[31m-        ],[m
+[31m-        "curly": true,[m
+[31m-        "eofline": false,[m
+[31m-        "forin": false,[m
+[31m-        "indent": [ true, "spaces" ],[m
+[31m-        "interface-name": [true, "never-prefix"],[m
+[31m-        "jsdoc-format": true,[m
+[31m-        "jsx-no-lambda": false,[m
+[31m-        "jsx-no-multiline-js": true,[m
+[31m-        "label-position": true,[m
+[31m-        "max-line-length": [ true, 180 ],[m
+[31m-        "no-arg": true,[m
+[31m-        "no-bitwise": true,[m
+[31m-        "no-consecutive-blank-lines": false,[m
+[31m-        "no-construct": true,[m
+[31m-        "no-debugger": true,[m
+[31m-        "no-duplicate-variable": true,[m
+[31m-        "no-empty": true,[m
+[31m-        "no-eval": true,[m
+[31m-        "no-shadowed-variable": true,[m
+[31m-        "no-string-literal": true,[m
+[31m-        "no-switch-case-fall-through": true,[m
+[31m-        "no-trailing-whitespace": false,[m
+[31m-        "no-unused-expression": true,[m
+[31m-        "no-use-before-declare": true,[m
+[31m-        "one-line": [[m
+[31m-            false,[m
+[31m-            "check-catch",[m
+[31m-            "check-else",[m
+[31m-            "check-open-brace",[m
+[31m-            "check-whitespace"[m
+[31m-        ],[m
+[31m-        "semicolon": [true, "always"],[m
+[31m-        "trailing-comma": [false],[m
+[31m-        "triple-equals": [ true, "allow-null-check" ],[m
+[31m-        "typedef": [[m
+[31m-            true,[m
+[31m-            "parameter",[m
+[31m-            "property-declaration"[m
+[31m-        ],[m
+[31m-        "typedef-whitespace": [[m
+[31m-            false,[m
+[31m-            {[m
+[31m-                "call-signature": "nospace",[m
+[31m-                "index-signature": "nospace",[m
+[31m-                "parameter": "nospace",[m
+[31m-                "property-declaration": "nospace",[m
+[31m-                "variable-declaration": "nospace"[m
+[31m-            }[m
+[31m-        ],[m
+[31m-        "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"],[m
+[31m-        "whitespace": [[m
+[31m-            false,[m
+[31m-            "check-branch",[m
+[31m-            "check-decl",[m
+[31m-            "check-module",[m
+[31m-            "check-operator",[m
+[31m-            "check-separator",[m
+[31m-            "check-type",[m
+[31m-            "check-typecast"[m
+[31m-        ][m
+[31m-    }[m
+[32m+[m[32m{[m[41m[m
+[32m+[m[32m    "extends": ["tslint-react"],[m[41m[m
+[32m+[m[32m    "rules": {[m[41m[m
+[32m+[m[32m        "align": [[m[41m[m
+[32m+[m[32m            false,[m[41m[m
+[32m+[m[32m            "parameters",[m[41m[m
+[32m+[m[32m            "arguments",[m[41m[m
+[32m+[m[32m            "statements"[m[41m[m
+[32m+[m[32m        ],[m[41m[m
+[32m+[m[32m        "ban": false,[m[41m[m
+[32m+[m[32m        "class-name": true,[m[41m[m
+[32m+[m[32m        "comment-format": [[m[41m[m
+[32m+[m[32m            true,[m[41m[m
+[32m+[m[32m            "check-space"[m[41m[m
+[32m+[m[32m        ],[m[41m[m
+[32m+[m[32m        "curly": true,[m[41m[m
+[32m+[m[32m        "eofline": false,[m[41m[m
+[32m+[m[32m        "forin": false,[m[41m[m
+[32m+[m[32m        "indent": [ true, "spaces" ],[m[41m[m
+[32m+[m[32m        "interface-name": [true, "never-prefix"],[m[41m[m
+[32m+[m[32m        "jsdoc-format": true,[m[41m[m
+[32m+[m[32m        "jsx-no-lambda": false,[m[41m[m
+[32m+[m[32m        "jsx-no-multiline-js": true,[m[41m[m
+[32m+[m[32m        "label-position": true,[m[41m[m
+[32m+[m[32m        "max-line-length": [ true, 180 ],[m[41m[m
+[32m+[m[32m        "no-arg": true,[m[41m[m
+[32m+[m[32m        "no-bitwise": true,[m[41m[m
+[32m+[m[32m        "no-consecutive-blank-lines": false,[m[41m[m
+[32m+[m[32m        "no-construct": true,[m[41m[m
+[32m+[m[32m        "no-debugger": true,[m[41m[m
+[32m+[m[32m        "no-duplicate-variable": true,[m[41m[m
+[32m+[m[32m        "no-empty": true,[m[41m[m
+[32m+[m[32m        "no-eval": true,[m[41m[m
+[32m+[m[32m        "no-shadowed-variable": true,[m[41m[m
+[32m+[m[32m        "no-string-literal": true,[m[41m[m
+[32m+[m[32m        "no-switch-case-fall-through": true,[m[41m[m
+[32m+[m[32m        "no-trailing-whitespace": false,[m[41m[m
+[32m+[m[32m        "no-unused-expression": true,[m[41m[m
+[32m+[m[32m        "no-use-before-declare": true,[m[41m[m
+[32m+[m[32m        "one-line": [[m[41m[m
+[32m+[m[32m            false,[m[41m[m
+[32m+[m[32m            "check-catch",[m[41m[m
+[32m+[m[32m            "check-else",[m[41m[m
+[32m+[m[32m            "check-open-brace",[m[41m[m
+[32m+[m[32m            "check-whitespace"[m[41m[m
+[32m+[m[32m        ],[m[41m[m
+[32m+[m[32m        "semicolon": [true, "always"],[m[41m[m
+[32m+[m[32m        "trailing-comma": [false],[m[41m[m
+[32m+[m[32m        "triple-equals": [ true, "allow-null-check" ],[m[41m[m
+[32m+[m[32m        "typedef": [[m[41m[m
+[32m+[m[32m            true,[m[41m[m
+[32m+[m[32m            "parameter",[m[41m[m
+[32m+[m[32m            "property-declaration"[m[41m[m
+[32m+[m[32m        ],[m[41m[m
+[32m+[m[32m        "typedef-whitespace": [[m[41m[m
+[32m+[m[32m            false,[m[41m[m
+[32m+[m[32m            {[m[41m[m
+[32m+[m[32m                "call-signature": "nospace",[m[41m[m
+[32m+[m[32m                "index-signature": "nospace",[m[41m[m
+[32m+[m[32m                "parameter": "nospace",[m[41m[m
+[32m+[m[32m                "property-declaration": "nospace",[m[41m[m
+[32m+[m[32m                "variable-declaration": "nospace"[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m        ],[m[41m[m
+[32m+[m[32m        "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"],[m[41m[m
+[32m+[m[32m        "whitespace": [[m[41m[m
+[32m+[m[32m            false,[m[41m[m
+[32m+[m[32m            "check-branch",[m[41m[m
+[32m+[m[32m            "check-decl",[m[41m[m
+[32m+[m[32m            "check-module",[m[41m[m
+[32m+[m[32m            "check-operator",[m[41m[m
+[32m+[m[32m            "check-separator",[m[41m[m
+[32m+[m[32m            "check-type",[m[41m[m
+[32m+[m[32m            "check-typecast"[m[41m[m
+[32m+[m[32m        ][m[41m[m
+[32m+[m[32m    }[m[41m[m
+ }[m
+\ No newline at end of file[m
