@@ -40,9 +40,9 @@ class MySubmissionBlock extends React.Component<MySubmissionBlockProps, MySubmis
         <label>This is submission block</label>
         <button onClick={this.handleClick}>Add</button>
         <label>Address:</label>
-        <input type="text" onChange={this.handleAddressChange} />
+        <input type="text" onChange={this.handleAddressChange} value={this.state.order.Address} />
         <label>Phone:</label>
-        <input type="text" onChange={this.handlePhoneChange} />
+        <input type="text" onChange={this.handlePhoneChange} value={this.state.order.Phone} />
       </div>
     );
   }
