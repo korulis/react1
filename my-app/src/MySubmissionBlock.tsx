@@ -1,8 +1,8 @@
 import * as React from 'react';
 import MySubmissionBlockProps from './MySubmissionBlockProps';
-import MySubmissionBlockState from './MySubmissionBlockState';
+import MyOrder from './MyOrder';
 
-class MySubmissionBlock extends React.Component<MySubmissionBlockProps, MySubmissionBlockState>{
+class MySubmissionBlock extends React.Component<MySubmissionBlockProps, MyOrder>{
 
   constructor(props: MySubmissionBlockProps) {
     super(props);
@@ -10,20 +10,18 @@ class MySubmissionBlock extends React.Component<MySubmissionBlockProps, MySubmis
     this.state = this.initialState;
   }
 
-  initialState: MySubmissionBlockState = { order: { Address: "", Phone: "" } };
+  initialState: MyOrder = { Address: "", Phone: "" };
 
   handleChange: React.ChangeEventHandler<HTMLInputElement> = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
-      order: {
-        ...this.state.order,
-        [event.target.name]: event.target.value
-      }
+      ...this.state,
+      [event.target.name]: event.target.value
     });
   }
 
 
   handleClick = (event: React.SyntheticEvent<any>) => {
-    this.props.onSumbission(this.state.order);
+    this.props.onSumbission(this.state);
     this.setState(this.initialState);
     event.preventDefault();
   }
@@ -40,9 +38,19 @@ class MySubmissionBlock extends React.Component<MySubmissionBlockProps, MySubmis
         <label>This is submission block</label>
         <button onClick={this.handleClick}>Add</button>
         <label>Address:</label>
-        <input type="text" onChange={this.handleChange} name="Address" value={this.state.order.Address} onKeyPress={this.handleKeyPress} />
+        <input
+          type="text"
+          onChange={(e) => { this.setState({ Address: e.target.value }); }}
+          value={this.state.Address}
+          onKeyPress={this.handleKeyPress}
+        />
         <label>Phone:</label>
-        <input type="text" onChange={this.handleChange} name="Phone" value={this.state.order.Phone} onKeyPress={this.handleKeyPress} />
+        <input
+          type="text"
+          onChange={(e) => { this.setState({ Phone: e.target.value }); }}
+          value={this.state.Phone}
+          onKeyPress={this.handleKeyPress}
+        />
       </div>
     );
   }
