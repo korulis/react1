@@ -12,21 +12,15 @@ class MySubmissionBlock extends React.Component<MySubmissionBlockProps, MySubmis
 
   initialState: MySubmissionBlockState = { order: { Address: "", Phone: "" } };
 
-  handleAddressChange: React.ChangeEventHandler<any> = (event: React.ChangeEvent<any>) => {
-    // alert("change");
-    let futureValue = event.target.value;
-    this.setState({ order: { Phone: this.state.order.Phone, Address: futureValue } });
-
-    event.preventDefault();
+  handleChange: React.ChangeEventHandler<HTMLInputElement> = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      order: {
+        ...this.state.order,
+        [event.target.name]: event.target.value
+      }
+    });
   }
 
-  handlePhoneChange: React.ChangeEventHandler<any> = (event: React.ChangeEvent<any>) => {
-    // alert("change");
-    let futureValue = event.target.value;
-    this.setState({ order: { Phone: futureValue, Address: this.state.order.Address } });
-
-    event.preventDefault();
-  }
 
   handleClick = (event: React.SyntheticEvent<any>) => {
     this.props.onSumbission(this.state.order);
@@ -39,16 +33,16 @@ class MySubmissionBlock extends React.Component<MySubmissionBlockProps, MySubmis
       this.handleClick(event);
     }
   }
-  
+
   public render() {
     return (
       <div>
         <label>This is submission block</label>
         <button onClick={this.handleClick}>Add</button>
         <label>Address:</label>
-        <input type="text" onChange={this.handleAddressChange} value={this.state.order.Address} onKeyPress={this.handleKeyPress} />
+        <input type="text" onChange={this.handleChange} name="Address" value={this.state.order.Address} onKeyPress={this.handleKeyPress} />
         <label>Phone:</label>
-        <input type="text" onChange={this.handlePhoneChange} value={this.state.order.Phone} onKeyPress={this.handleKeyPress} />
+        <input type="text" onChange={this.handleChange} name="Phone" value={this.state.order.Phone} onKeyPress={this.handleKeyPress} />
       </div>
     );
   }
