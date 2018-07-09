@@ -28,21 +28,27 @@ class MySubmissionBlock extends React.Component<MySubmissionBlockProps, MySubmis
     event.preventDefault();
   }
 
-  handleClick = (event: React.MouseEvent<any>) => {
+  handleClick = (event: React.SyntheticEvent<any>) => {
     this.props.onSumbission(this.state.order);
     this.setState(this.initialState);
     event.preventDefault();
   }
 
+  handleKeyPress = (event: React.KeyboardEvent<any>) => {
+    if (event.key === "Enter") {
+      this.handleClick(event);
+    }
+  }
+  
   public render() {
     return (
       <div>
         <label>This is submission block</label>
         <button onClick={this.handleClick}>Add</button>
         <label>Address:</label>
-        <input type="text" onChange={this.handleAddressChange} value={this.state.order.Address} />
+        <input type="text" onChange={this.handleAddressChange} value={this.state.order.Address} onKeyPress={this.handleKeyPress} />
         <label>Phone:</label>
-        <input type="text" onChange={this.handlePhoneChange} value={this.state.order.Phone} />
+        <input type="text" onChange={this.handlePhoneChange} value={this.state.order.Phone} onKeyPress={this.handleKeyPress} />
       </div>
     );
   }
