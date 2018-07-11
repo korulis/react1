@@ -10,7 +10,8 @@ const MyRowsComponent = (perams:MyRowsComponentParams) =>{
         result.push(MyOneRow({order:order}));
     }
 
-    return (<div>{result}</div>);
+    return (
+    <tbody>{result}</tbody>);
 };
 
 export default MyRowsComponent;

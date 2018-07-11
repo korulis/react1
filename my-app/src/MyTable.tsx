@@ -33,12 +33,14 @@ class MyTable extends React.Component<{}, MyRowsComponentParams>{
     return (
       <div>
         <MySubmissionBlock onSumbission={this.handleSubmission} />
-        <table>
-          <tr>
-            <td> ADDRESS </td>
-            <td> PHONE </td>
-            <td> NUMBER_OF_PIZZAS </td>
-          </tr>
+        <table className="table">
+          <thead className="thead-dark">
+            <tr>
+              <td> ADDRESS </td>
+              <td> PHONE </td>
+              <td> NUMBER_OF_PIZZAS </td>
+            </tr>
+          </thead>
           <MyRowsComponent orders={this.state.orders} />
         </table>
       </div>
