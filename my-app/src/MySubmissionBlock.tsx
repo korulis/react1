@@ -19,7 +19,6 @@ class MySubmissionBlock extends React.Component<MySubmissionBlockProps, MyOrder>
     });
   }
 
-
   handleClick = (event: React.SyntheticEvent<any>) => {
     this.props.onSumbission(this.state);
     this.setState(this.initialState);

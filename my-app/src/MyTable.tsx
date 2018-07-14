@@ -20,6 +20,28 @@ class MyTable extends React.Component<{}, MyRowsComponentParams>{
 
   }
 
+  fetchOrders = async () =>
+    await (await fetch("http://localhost:5000/orders/")).json()
+
+  async componentDidMount() {
+    let data = await this.fetchOrders();
+
+    let orderss: MyOrder[] = data.map((x: any) => ({ Address: x.address, Phone: x.phone }));
+    console.log(orderss);
+
+    this.setState({ orders: orderss });
+
+
+    // fetch("http://localhost:5000/orders/")
+    //   .then(results => {
+    //     let data = results.json();
+    //     return data;
+    //   }).then(data => {
+    //     console.log(data);
+    //     console.log(data[0].address);
+    //   });
+  }
+
   handleChange = (event: any) => {
     event.preventDefault();
   }
