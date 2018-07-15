@@ -26,7 +26,7 @@ class MyTable extends React.Component<{}, MyRowsComponentParams>{
     return order;
   }
 
-  fromMyOrder = (order: MyOrder): any => {
+  toOrderDto = (order: MyOrder): any => {
     let orderDto = { address: order.Address, phone: order.Phone };
     return orderDto;
   }
@@ -34,8 +34,7 @@ class MyTable extends React.Component<{}, MyRowsComponentParams>{
 
   addOrder = async (order: MyOrder) => {
     let id = uuid.v4();
-    let body = JSON.stringify(this.fromMyOrder(order));
-    console.log("Create this.", body);
+    let body = JSON.stringify(this.toOrderDto(order));
     let request = (await fetch(
       `http://localhost:5000/orders/${id}`,
       {
@@ -52,9 +51,7 @@ class MyTable extends React.Component<{}, MyRowsComponentParams>{
   fetchOrders = async (): Promise<MyOrder[]> => {
     let requestPayload = await fetch("http://localhost:5000/orders/");
     let orderDtos = await requestPayload.json();
-    console.log(requestPayload);
-    console.log(orderDtos);
-    return (orderDtos).map((x: any) => this.toMyOrder(x));
+    return (orderDtos).map((orderDto: any) => this.toMyOrder(orderDto));
   }
 
 
