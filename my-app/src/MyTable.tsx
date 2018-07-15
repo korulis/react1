@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as uuid from 'uuid';
 // import MyFirstRendererParams from './MyFirstRendererParams';
 import MyRowsComponent from './MyRowsComponent';
 import MyOrder from './MyOrder';
@@ -20,33 +21,54 @@ class MyTable extends React.Component<{}, MyRowsComponentParams>{
 
   }
 
-  fetchOrders = async () =>
-    await (await fetch("http://localhost:5000/orders/")).json()
+  toMyOrder = (orderDto: any): MyOrder => {
+    let order: MyOrder = { Address: orderDto.address, Phone: orderDto.phone };
+    return order;
+  }
+
+  fromMyOrder = (order: MyOrder): any => {
+    let orderDto = { address: order.Address, phone: order.Phone };
+    return orderDto;
+  }
+
+
+  addOrder = async (order: MyOrder) => {
+    let id = uuid.v4();
+    let body = JSON.stringify(this.fromMyOrder(order));
+    console.log("Create this.", body);
+    let request = (await fetch(
+      `http://localhost:5000/orders/${id}`,
+      {
+        body: body,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+      }
+    ));
+    await request.json();
+  }
+
+  fetchOrders = async (): Promise<MyOrder[]> => {
+    let requestPayload = await fetch("http://localhost:5000/orders/");
+    let orderDtos = await requestPayload.json();
+    console.log(requestPayload);
+    console.log(orderDtos);
+    return (orderDtos).map((x: any) => this.toMyOrder(x));
+  }
+
 
   async componentDidMount() {
-    let data = await this.fetchOrders();
-
-    let orderss: MyOrder[] = data.map((x: any) => ({ Address: x.address, Phone: x.phone }));
-    console.log(orderss);
-
-    this.setState({ orders: orderss });
-
-
-    // fetch("http://localhost:5000/orders/")
-    //   .then(results => {
-    //     let data = results.json();
-    //     return data;
-    //   }).then(data => {
-    //     console.log(data);
-    //     console.log(data[0].address);
-    //   });
+    let orders = await this.fetchOrders();
+    this.setState({ orders: orders });
   }
 
   handleChange = (event: any) => {
     event.preventDefault();
   }
 
-  handleSubmission = (newOrder: MyOrder) => {
+  handleSubmission = async (newOrder: MyOrder) => {
+    this.addOrder(newOrder);
     this.setState({ orders: this.state.orders.concat(newOrder) });
   }
 
