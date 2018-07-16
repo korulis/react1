@@ -2,7 +2,7 @@ import MyOrder from './MyOrder';
 
 class OrderDtoMapper {
     static toMyOrder = (orderDto: any): MyOrder => {
-        let order: MyOrder = { Address: orderDto.address, Phone: orderDto.phone };
+        let order: MyOrder = { Address: orderDto.address, Phone: orderDto.phone, Name:orderDto.name, OrderRef:orderDto.orderRef };
         return order;
     }
 

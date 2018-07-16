@@ -23,8 +23,16 @@ class RestOrders {
     static fetchOrders = async (): Promise<MyOrder[]> => {
         let response: Response = await fetch("http://localhost:5000/orders/");
         let orderDtos = await response.json();
+        console.log(orderDtos);
         return (orderDtos).map((orderDto: any) => OrderDtoMapper.toMyOrder(orderDto));
     }
+
+    static fetchOrder = async (ref:string): Promise<MyOrder> => {
+        let response: Response = await fetch(`http://localhost:5000/orders/${ref}`);
+        let orderDto = await response.json();
+        return OrderDtoMapper.toMyOrder(orderDto);
+    }
+
 }
 
 export default RestOrders;
