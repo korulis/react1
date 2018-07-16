@@ -1,8 +1,7 @@
 import * as React from 'react';
-import * as uuid from 'uuid';
-// import MyFirstRendererParams from './MyFirstRendererParams';
 import MyRowsComponent from './MyRowsComponent';
 import MyOrder from './MyOrder';
+import RestOrders from './RestOrders';
 import MyRowsComponentParams from './MyRowsComponentParams';
 import MySubmissionBlock from "./MySubmissionBlock";
 
@@ -18,45 +17,10 @@ class MyTable extends React.Component<{}, MyRowsComponentParams>{
     ];
 
     this.state = { orders: orders };
-
   }
-
-  toMyOrder = (orderDto: any): MyOrder => {
-    let order: MyOrder = { Address: orderDto.address, Phone: orderDto.phone };
-    return order;
-  }
-
-  toOrderDto = (order: MyOrder): any => {
-    let orderDto = { address: order.Address, phone: order.Phone };
-    return orderDto;
-  }
-
-
-  addOrder = async (order: MyOrder) => {
-    let id = uuid.v4();
-    let body = JSON.stringify(this.toOrderDto(order));
-    let request = (await fetch(
-      `http://localhost:5000/orders/${id}`,
-      {
-        body: body,
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-      }
-    ));
-    await request.json();
-  }
-
-  fetchOrders = async (): Promise<MyOrder[]> => {
-    let requestPayload = await fetch("http://localhost:5000/orders/");
-    let orderDtos = await requestPayload.json();
-    return (orderDtos).map((orderDto: any) => this.toMyOrder(orderDto));
-  }
-
 
   async componentDidMount() {
-    let orders = await this.fetchOrders();
+    let orders = await RestOrders.fetchOrders();
     this.setState({ orders: orders });
   }
 
@@ -65,7 +29,7 @@ class MyTable extends React.Component<{}, MyRowsComponentParams>{
   }
 
   handleSubmission = async (newOrder: MyOrder) => {
-    this.addOrder(newOrder);
+    RestOrders.addOrder(newOrder);
     this.setState({ orders: this.state.orders.concat(newOrder) });
   }
 
