@@ -26,6 +26,7 @@ class RestOrders {
     static fetchOrders = async (): Promise<MyOrder[]> => {
         let response: Response = await fetch(`${repoBaseUrl}orders/`);
         let orderDtos = await response.json();
+        console.log(orderDtos);
         return (orderDtos).map((orderDto: any) => OrderDtoMapper.toMyOrder(orderDto));
     }
 
