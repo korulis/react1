@@ -33,11 +33,12 @@ class MyTable extends React.Component<{}, MyRowsComponentParams>{
     this.setState({ orders: this.state.orders.concat(newOrder) });
   }
 
+
   public render() {
 
     return (
       <div>
-        <MySubmissionBlock onSumbission={this.handleSubmission} />
+        <MySubmissionBlock onSumbission={this.handleSubmission}/>
         <table className="table">
           <thead className="thead-dark">
             <tr>
