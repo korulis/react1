@@ -1,6 +1,10 @@
 import * as React from 'react';
 import MySubmissionBlockProps from './MySubmissionBlockProps';
 import MyOrder from './MyOrder';
+import { connect } from 'react-redux';
+import GlobalState from './store/GlobalState';
+import { Dispatch, AnyAction } from 'redux';
+import * as orderActions from './actions/orderActions';
 
 class MySubmissionBlock extends React.Component<MySubmissionBlockProps, MyOrder>{
 
@@ -20,8 +24,11 @@ class MySubmissionBlock extends React.Component<MySubmissionBlockProps, MyOrder>
   }
 
   handleClick = (event: React.SyntheticEvent<any>) => {
-    this.props.onSumbission(this.state);
-    this.setState(this.initialState);
+    // this.props.onSumbission(this.state);
+    // this.setState(this.initialState);
+
+    this.props.addOrder(this.state);
+
     event.preventDefault();
   }
 
@@ -56,4 +63,17 @@ class MySubmissionBlock extends React.Component<MySubmissionBlockProps, MyOrder>
 
 }
 
-export default MySubmissionBlock;
+function mapStateToProps(state: GlobalState, ownProps: any) {
+  // typeof(ownProps) + typeof(object returned by this function) = MySubmissionBlockProps
+  return {
+    orders: state.orders
+  };
+}
+
+function mapDispatchToProps(dispatch: Dispatch<AnyAction>) {
+  return {
+    addOrder: (order: MyOrder) => dispatch(orderActions.addOrder(order))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MySubmissionBlock);

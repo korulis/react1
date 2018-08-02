@@ -5,8 +5,10 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/configureStore';
 import { Provider } from 'react-redux';
+import GlobalState from './store/GlobalState';
 
-const store = configureStore();
+const globalState: GlobalState = { orders: [] };
+const store = configureStore(globalState);
 
 ReactDOM.render(
   <Provider store={store}>
